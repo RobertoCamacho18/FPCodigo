@@ -1,0 +1,882 @@
+#include <stdio.h>
+#include <math.h>
+#include <tgmath.h>
+#include <stdlib.h>
+#include<windows.h>
+#include <conio.h>
+
+using namespace std;
+
+//Prototipo de funcion
+void fraccio (float, float&, float&);
+void pedircoefi();
+float resultado();
+
+//Variables globales
+float raiz, res, *calif;
+int numexpo;
+
+
+//Defincicion o implementacion de la funcion main
+int main ()
+{
+	//Declaraci+on de variables utilizadas	
+	int op1, op2, i1=1, i2=-1, aux2, aux4;
+	char aa=160, ae=130, ai=161, ao=162, au=163, AA=181, gra=248, i, mm=241, in=168;
+	
+	int rea1, rea2, rea3, rea4, ima1, ima2, ima3, ima4, doub, n;
+	float r, r1, aux, aux1, aux3, ang, au1, au2, au3, rea11, ima11, ima22, a, b, x=1, y=1;
+	char op='n';
+	double entera, decimal, num, PI=3.14159265358979323846;
+	
+	do
+	{
+		//Bienvenida al proyecto por parte del programador
+		printf("\n\n");
+		printf("\t\tBienvenido a mi proyecto.\n\n", au);
+		printf("1) N%cmeros complejos\n2) Polinomios\n3) Referencias\n4) Salir\n\n", au);
+		
+		//Seleccion de la opción que desea hacer el usuario
+		printf("\n\nElige una opci%cn: ",ao);
+		scanf("%d", &op1);
+		
+		system("cls");
+		switch (op1)
+		{
+			case 1:
+				
+				do
+				{
+					//Opciones dentro del tema Números complejos
+					printf("\n\n");
+					printf("\t\tBienvenido a la calculadora de n%cmeros complejos\n\n", au);
+					printf("\n\n1)  Suma y/o Resta de complejos.\n2)  Multiplicaci%cn de complejos.\n3)  Divisi%cn de complejos.\n4)  Conversi%cn de bin%cmica a polar.\n", ao, ao, ao, ao);
+					printf("5)  Conversi%cn de polar a bin%cmica.\n6)  Conversi%cn exponencial a polar.\n7)  Conversi%cn de polar a exponencial.\n8)  Multiplicaci%cn polar.\n9)  Divisi%cn polar.\n", ao, ao, ao, ao, ao, ao);
+					printf("10) Potenciaci%cn y/o Radicaci%cn polar.\n11) Salir\n\n", ao, ao);
+					
+					//Seleccion del subtema que desea realizar
+					printf("\n\nElige una opci%cn: ",ao);
+					scanf("%d", &op2);
+					
+					switch (op2)
+					{
+						case 1:
+							//Suma y/o Resta
+							system ("cls");
+							printf("\n");
+							//Bienvenida al submenu
+							printf("\t\tBienvenido a la Suma y/o Resta de n%cmeros complejos\n\n", au);
+							
+							//Solicitud de las varibles del primer numero complejo
+							printf("\n\nDigite los coeficientes del primer n%cmero complejo.\n", au);
+							printf("Parte Real: ");
+							scanf("%d", &rea1);
+							printf("Parte imaginaria: ");
+							scanf("%d", &ima1);
+							
+							//Solicitud de las varibles del segundo numero complejo
+							printf("\n\nDigite los coeficientes del segundo n%cmero complejo.\n", au);
+							printf("Parte Real: ");
+							scanf("%d", &rea2);
+							printf("Parte imaginaria: ");
+							scanf("%d", &ima2);
+							
+							//Realizacion de la suma o resta
+							rea3=rea1+rea2;
+							ima3=ima1+ima2;
+							
+							printf("\n");
+							//Escritura en pantalla de los diferentes casos que se pueden presentar
+							//Si la suma de los reales es positivo hacer:
+							if (rea3>0)
+							{
+								//Si la suma de los imaginarios es positivo el resultado se expresa de la siguiente manera.
+								if (ima3>0)
+								{
+									printf("\n\nEl resultado es: %d + %di\n\n", rea3, ima3);
+								}
+								//Si la suma de los imaginarios es negativo el resultado se expresa de la siguiente manera.
+								else
+								{
+									printf("\n\nEl resultado es: %d %di\n\n", rea3, ima3);
+								}
+							}
+							//Si la suma de los reales es negativo
+							else
+							{
+								//Si la suma de los reales es positivo el resultado se expresa de la siguiente manera.
+								if (ima3>0)
+								{
+									printf("\n\nEl resultado es: %d + %di\n\n", rea3, ima3);
+								}
+								//Si la suma de los reales es negativo el resultado se expresa de la siguiente manera.
+								else
+								{
+									printf("\n\nEl resultado es: %d %di\n\n", rea3, ima3);
+								}
+							}
+							
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");
+							break;
+						case 2:
+							//Multiplicación de números complejos
+							system ("cls");
+							printf("\n");
+							printf("\t\tBienvenido a la Multiplicaci%cn de n%cmeros complejos.\n\n", ao, au);
+							
+							//Solicitud de las varibles del primer número complejo
+							printf("\n\nDigite los coeficientes del primer n%cmero complejo\n", au);
+							printf("Parte Real: ");
+							scanf("%d", &rea1);
+							printf("Parte imaginaria: ");
+							scanf("%d", &ima1);
+							
+							//Solicitud de las varibles del segundo número complejo
+							printf("\n\nDigite los coeficientes del segundo n%cmero complejo\n", au);
+							printf("Parte Real: ");
+							scanf("%d", &rea2);
+							printf("Parte imaginaria: ");
+							scanf("%d", &ima2);
+							
+							//Realizacion de la multilpicación de los imaginarios i*i=-1
+							aux=i1*i2;
+							
+							//Producto imaginario
+							ima3= (rea1*ima2)+(ima1*rea2);
+							//Producto real
+							rea3= (rea1*rea2)+(aux*(ima1*ima2));
+							
+							printf("\n\n\n");
+							
+							//Escritura en pantalla de los diferentes casos que se pueden presentar
+							if (rea3>0)
+							{
+								if (ima3>0)
+								{
+									printf("\nEl resultado es: %d + %di\n", rea3, ima3);
+								}
+								else
+								{
+									printf("\nEl resultado es: %d %di\n", rea3, ima3);
+								}
+							}
+							else
+							{
+								if (ima3>0)
+								{
+									printf("\nEl resultado es: %d + %di\n", rea3, ima3);
+								}
+								else
+								{
+									printf("\nEl resultado es: %d %di\n", rea3, ima3);
+								}
+							}
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");
+							break;
+						case 3:
+							//Division de numeros complejos
+							system ("cls");
+							printf("\n");
+							printf("\t\tBienvenido a la Divisi%cn de n%cmeros complejos.\n\n", ao, au);
+							
+							//Solicitud de las varibles del primer número complejo
+							printf("\n\nDigite los coeficientes del primer n%cmero complejo\n", au);
+							printf("Parte Real: ");
+							scanf("%d", &rea1);
+							printf("Parte imaginaria: ");
+							scanf("%d", &ima1);
+							
+							//Solicitud de las varibles del segundo número complejo
+							printf("\n\nDigite los coeficientes del segundo n%cmero complejo\n", au);
+							printf("Parte Real: ");
+							scanf("%d", &rea2);
+							printf("Parte imaginaria: ");
+							scanf("%d", &ima2);
+							
+							//Realizacion de la multilpicación de los imaginarios i*i=-1
+							aux=i1*i2;
+							
+							//Conjugado
+							aux1=-1*ima2;
+							
+							//Multiplicación de la parte superior
+							ima3= (rea1*aux1)+(ima1*rea2);
+							rea3= (rea1*rea2)+(aux*(ima1*aux1));
+							
+							//Multiplicaion de la parte inferior de la division
+							rea4= (rea2*rea2)+(aux*(ima2*aux1));
+							ima4= (rea2*aux1)+(ima2*rea2);
+							
+							printf("\n\n\n");
+							
+							//Escritura en pantalla de los diferentes casos que se pueden presentar
+							if (rea3>0)
+							{
+								if (ima3>0)
+								{
+									printf("\nEl resultado es: (%d + %di) / %d\n", rea3, ima3, rea4);
+								}
+								else
+								{
+									printf("\nEl resultado es: (%d %di) / %d\n", rea3, ima3, rea4);
+								}
+							}
+							else
+							{
+								if (ima3>0)
+								{
+									printf("\nEl resultado es: (%d + %di) / %d\n", rea3, ima3, rea4);
+								}
+								else
+								{
+									printf("\nEl resultado es: (%d %di) / %d\n", rea3, ima3, rea4);
+								}
+							}
+							
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");
+							break;
+						case 4:
+							//Conversion binomica a polar
+							system ("cls");
+							printf("\n");
+							printf("\t\tBienvenido a la Conversi%cn de Bin%cmica a Polar.\n\n", ao, ao);
+							
+							//Solictud de las variables de un número complejo
+							printf("\n\nDigite los coeficientes del primer n%cmero complejo\n", au);
+							printf("Parte Real: ");
+							scanf("%f", &rea11);
+							printf("Parte imaginaria: ");
+							scanf("%f", &ima11);
+							
+							//Obtencion de módulo (r)
+							r=(sqrt(pow(rea11,2)+pow(ima11,2)));
+							
+							//Obtencion del argumento (ángulo)
+							aux=ima11/rea11;
+							//Función atan para obtener el arctang del ángulo expresado en grados
+							ang=atan(aux)*(180/PI);
+							
+							printf("\n\n");
+							
+							//Escritura en pantalla de los diferentes casos que se pueden presentar
+							if (rea11==0)
+							{
+								if (ima11>0)
+								{
+									printf("\nEl resultado es: %.2f cis 90%c", fabs(ima11), gra);
+								}
+								else
+								{
+									printf("\nEl resultado es: %.2f cis 270%c", fabs(ima11), gra);
+								}
+							}
+							else
+							{
+								if (ima11==0)
+								{
+									if (rea11>0)
+									{
+										printf("\nEl resultado es: %.0f cis 0 %c", fabs(rea11), gra);
+									}
+									else
+									{
+										printf("\nEl resultado es: %.0f cis 180 %c", fabs(rea11), gra);
+									}
+								}
+								else
+								{
+									
+									if (rea11>0)
+									{
+										if(ima11>0)
+										{
+											
+											printf("\n\nEl resultado es: %.3lf cis %.3f%c", r, ang, gra);
+											printf("\033[1;31m");
+											printf("\n\n\nAdvertencia: Si el valor del m%cdulo se encuentra en n%cmeros enteros hacer caso omiso a este mensaje", ao, au);
+											printf("\n\n 	     Nota: El valor del m%cdulo (r) es: ra%cz (%.2f)", ao, ai, pow(r,2));
+											printf("\n 	     Recuerda que el valor ya esta convertido.");
+											printf("\033[0m");					
+										}
+										else
+										{	
+											au1=360+ang;
+											printf("\n\nEl resultado es: %.3f cis %.3f%c", r, au1, gra);
+											printf("\033[1;31m");
+											printf("\n\n\nAdvertencia: Si el valor del m%cdulo se encuentra en n%cmeros enteros hacer caso omiso a este mensaje", ao, au);
+											printf("\n\n 	     Nota: El valor del m%cdulo (r) es: ra%cz (%.2f)", ao, ai, pow(r,2));
+											printf("\n 	     Recuerda que el valor ya esta convertido.");
+											printf("\033[0m");
+										}
+									}
+									else
+									{
+										if (ima11>0)
+										{
+											au1=180+ang;
+											
+											au1=180+ang;
+											printf("\n\nEl resultado es: %.3f cis %.3f%c", r, au1, gra);
+											printf("\033[1;31m");
+											printf("\n\n\nAdvertencia: Si el valor del m%cdulo se encuentra en n%cmeros enteros hacer caso omiso a este mensaje", ao, au);
+											printf("\n\n 	     Nota: El valor del m%cdulo (r) es: ra%cz (%.2f)", ao, ai, pow(r,2));
+											printf("\n 	     Recuerda que el valor ya esta convertido.");
+											printf("\033[0m");
+										}
+										else
+										{
+											au1=180+ang;
+											printf("\n\nEl resultado es: %.3f cis %.3f%c", r, au1, gra);
+											printf("\033[1;31m");
+											printf("\n\n\nAdvertencia: Si el valor del m%cdulo se encuentra en n%cmeros enteros hacer caso omiso a este mensaje", ao, au);
+											printf("\n\n 	     Nota: El valor del m%cdulo (r) es: ra%cz (%.2f)", ao, ai, pow(r,2));
+											printf("\n 	     Recuerda que el valor ya esta convertido.");
+											printf("\033[0m");
+										}
+									}
+								}											
+							}
+							
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");				
+							break;
+						case 5:
+							//Conversion polar a binomica
+							system ("cls");
+							printf("\n");
+							printf("\t\tBienvenido a la Conversi%cn de Polar a Bin%cmica.\n\n", ao, ao);
+							
+							//Solicitud de las varibles
+							printf("\n\nDigite los coeficientes del primer n%cmero complejo\n", au);
+							printf("Digite el m%cdulo (r): ", ao);
+							scanf("%f", &r);
+							printf("Digite el argumento del n%cmero polar: ", au);
+							scanf("%f", &ima11);
+							
+							//Obtencion del ángulo
+							aux=ima11*(PI/180);
+							
+							//Obtencion de la parte real (a)
+							a=r*cos(aux);
+							
+							//Obtencion de la parte imaginaria (b)
+							b=r*sin(aux);
+							
+							printf("\n\n");
+							
+							//Mostrar lo resultados en pantalla tomando en cuenta los diferentes casos que se pueden presentar
+							if (a>0)
+							{
+								if (b>0)
+								{
+									printf("\n\nEl resultado es: %f + %f i", a, b);
+									printf("\n\n\n\n%f cis %f %c = %f + %f i", r, ima11, gra, a, b);
+								}
+								else
+								{
+									printf("\n\nEl resultado es: %f %f i", a, b);
+									printf("\n\n\n\n%f cis %f %c = %f  %f i", r, ima11, gra, a, b);
+								}
+							}
+							else
+							{
+								if (b>0)
+								{
+									printf("\n\nEl resultado es: %f + %f i", a, b);
+									printf("\n\n\n\n%f cis %f %c = %f + %f i", r, ima11, gra, a, b);
+								}
+								else
+								{
+									printf("\n\nEl resultado es: %f %f i", a, b);
+									printf("\n\n\n\n  %f cis %f %c = %f %f i", r, ima11, gra, a, b);
+								}
+							}
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");	
+							break;
+						case 6:
+							//Conversion exponencial a polar
+							system ("cls");
+							printf("\n");
+							printf("\t\tBienvenido a la Conversi%cn Exponencial a Polar.\n\n", ao);
+							
+							//Solicitud de las varibles
+							printf("\n\nDigite los coeficientes del primer n%cmero complejo\n", au);
+							printf("Digite el m%cdulo (r): ", ao);
+							scanf("%f", &r);
+							printf("Digite el coeficiente del exponente: ");
+							scanf("%f", &ima11);
+							
+							//Obtencion del argumento (ángulo) 
+							aux=ima11*180;
+							
+							printf("\n\n\n");
+							
+							//Mostrar lo resultados en pantalla tomando en cuenta los diferentes casos que se pueden presentar
+							if(r>0)
+							{	
+							
+								if (ima11>=0)
+								{
+									
+									if (aux>=360)
+									{
+										while (aux>=360)
+										{
+											aux=aux-360;
+											printf("\nEl resultado es: %.2f cis %.2f%c", r, aux, gra);
+										}	
+									}
+									else
+									{
+										printf("\nEl resultado es: %.2f cis %.2f%c", r, aux, gra);
+									}
+								}
+								else
+								{
+									aux1=(ima11+2)*180;
+									printf("\nEl resultado es: %.2f cis %.2f%c", r, aux1, gra);
+								}
+							}
+							else
+							{
+								if (ima11>0)
+								{
+									aux1=360-aux;
+									printf("\nEl resultado es: %.2f cis %.2f%c", fabs(r), aux1, gra);
+								}
+								else
+								{
+									aux1=(ima11+2)*180;
+									printf("\nEl resultado es: %.2f cis %.2f%c", fabs(r), aux1, gra);
+								}
+							}
+							
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");	
+							break;
+						case 7:
+							//Conversion polar a exponencial
+							system ("cls");
+							printf("\n");
+							
+							//Solicitud de las varibles
+							printf("\t\tBienvenido a la Conversi%cn Polar a Exponencial.\n\n", ao);
+							printf("Digite el m%cdulo (r): ", ao);
+							scanf("%f", &r);
+							printf("Digite argumento del n%cmero polar: ", au);
+							scanf("%f", &aux1);
+							
+							//Realización de las operaciones para conseguir el exponete
+							aux3=aux1/180;
+							
+							//Converción del exponete en forma de fracción
+							fraccio(aux3, x, y);
+							
+							//Mostrar lo resultados en pantalla
+							printf("\n\n\nEl resultado es: %f e ^ [(%.0f PI/ %.0f) i ]", r, x, y);
+							
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");
+							break;
+						case 8:
+							//Multiplicación polar de dos números
+							system ("cls");
+							printf("\n");
+							printf("\t\tBienvenido a la Multiplicaci%cn de Polar de dos n%cmeros.\n\n", ao, au);
+							
+							//Solicitud de las varibles del primer número polar
+							printf("\n\nDigite los coeficientes del primer n%cmero complejo\n", au);
+							printf("Digite el m%cdulo (r): ", ao);
+							scanf("%f", &r);
+							printf("Digite el argumento (%cngulo): ", aa);
+							scanf("%f", &ima11);
+							
+							//Solicitud de las varibles del segundo número polar
+							printf("\n\nDigite los coeficientes del segundo n%cmero complejo\n", au);
+							printf("Digite el m%cdulo (r): ", ao);
+							scanf("%f", &r1);
+							printf("Digite el argumento (%cngulo): ", aa);
+							scanf("%f", &ima22);
+							
+							//Producto de los números reales
+							au1=r*r1;
+							
+							//Suma de los números imaginarios
+							aux=ima11+ima22;
+							
+							printf("\n\n\n");
+							
+							//Escritura en pantalla de los diferentes casos que se pueden presentar
+							if(aux>0)
+							{
+								while (aux>=360)
+									aux=aux-360;
+								printf("\nEl resultado es: %.0f cis %.1f %c\n", au1, aux, gra);
+							}
+							else
+							{
+								aux=360+aux;
+								printf("\nEl resultado es: %.0f cis %.1f %c\n", au1, aux, gra);
+							}
+							
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");
+							break;
+						case 9:
+							//División polar de dos números
+							system ("cls");
+							printf("\n");
+							printf("\t\tBienvenido a la Divisi%cn de Polar de dos n%cmeros.\n\n", ao, au);
+							
+							//Solicitud de las varibles del primer número polar
+							printf("\n\nDigite los coeficientes del primer n%cmero complejo\n", au);
+							printf("Digite el m%cdulo (r): ", ao);
+							scanf("%f", &r);
+							printf("Digite el argumento (%cngulo): ", aa);
+							scanf("%f", &ima11);
+							
+							//Solicitud de las varibles del segundo número polar
+							printf("\n\nDigite los coeficientes del segundo n%cmero complejo\n", au);
+							printf("Diguite el m%cdulo (r): ", ao);
+							scanf("%f", &r1);
+							printf("Digite el argumento (%cngulo): ", aa);
+							scanf("%f", &ima22);
+							
+							//Módulo del resultado final a través de la división de los números reales 
+							au1=r/r1;
+							
+							//Resta de los números imaginarios para obtener el argumento (ángulo)
+							aux=ima11-ima22;
+							
+							printf("\n\n\n");
+							
+							//Escritura en pantalla de los diferentes casos que se pueden presentar
+							if(aux>0)
+							{
+								while (aux>=360)
+									aux=aux-360;
+								printf("\nEl resultado es: %.2f cis %.2f %c\n", au1, aux, gra);
+							}
+							else
+							{
+								//while (aux<=360)
+								aux=360+aux;
+								printf("\nEl resultado es: %.2f cis %.2f %c\n", au1, aux, gra);
+							}
+							
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");
+							break;
+						case 10:
+							//Potenciacion y Radicacion
+							system ("cls");
+							printf("\n");
+							printf("\t\tBienvenido a la Potenciaci%cn y/o Radicaci%cn.\n\n", ao, ao);
+							
+							//Solicitud de varibles
+							printf("\n\nDigite los coeficientes del n%cmero complejo\n", au);
+							printf("Digite el m%cdulo (r): ", ao);
+							scanf("%f", &r);
+							printf("Digite el argumento (%cngulo): ", aa);
+							scanf("%f", &ima11);
+							printf("Digite el numerador de la potencia a la cual se va a elevar el n%cmero complejo (n): ", au);
+							scanf("%f", &x);
+							printf("Digite el denominador de la potencia a la cual se va a elevar el n%cmero complejo (n): ", au);
+							scanf("%f", &y);
+							
+							//Division para obtener la potencia en numeros decimales
+							num=x/y;
+							
+							//Separa la parte entera y decimal, ayudando a distinguir dichas partes
+							decimal=modf(num, &entera);
+							
+							//Eleva el modulo a la potencia introducida
+							au1 = pow(r, num);
+							
+							//Producto para la obtennción del ángulo
+							au2 = num*ima11;
+							
+							//Ángulo que se va a estar repitiendo, por lo que lo vamos a ir sumando a au2
+							au3=360/y;
+							
+							printf("\n\n\n");
+							
+							//Escritura en pantalla de los diferentes casos que se pueden presentar
+							if (decimal == 0)
+							{
+								if(au2 >= 360)
+								{
+									while (au2 >= 360)
+									{
+										au2=au2-360;
+										printf("\n\nEl resultado es: %f cis %f %c", au1, au2, gra);
+									}	
+								}
+								else
+								{
+									printf("\n\nEl resultado es: %f cis %f %c", au1, au2, gra);
+								}
+							}
+							else
+							{
+								if(au2 >= 360)
+								{
+									while (au2 >= 360)
+									{
+										au2=au2-360;
+									}	
+								}							
+								printf("\nk=0   z=0    %f cis %f %c", au1, au2, gra);
+								int cont=1;
+								while (cont < y)
+								{
+									au2=au2+au3;
+									
+									printf("\nk=%d   z=%d    %f cis %f %c", cont, cont, au1, au2, gra);
+									cont++;	
+								}		
+							}
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");
+							break;
+						case 11:
+							//Salida del tema números complejos
+							printf("\nElegiste Salir\n\n");
+							system("cls");
+							break;
+						default:
+							//Opcion no válida
+							system ("cls");
+							printf("\033[1;31m");
+							printf("\n\n\n\n\n");
+							printf("\t\t¡¡Opci%cn no v%clida!!\n\n",ao,aa);
+							printf("\t\tPor favor vuelve a intentar el seleccionar una opci%cn.\n", ao);
+							printf("\033[0m");
+							
+							//Pausa en la ejecucion del programa y despues limpia la pantalla
+							printf("\n\n\n\n\n");
+							system("pause");
+							system("cls");
+					}
+				}while(op2!=11);	
+				break;
+			case 2:
+				//Polinomios
+				system ("cls");
+				printf("\n\n");
+				printf("\t\tBienvenido a las calculadora de polinomios.\n\n");
+						
+				//Solicitud del exponente más alto al igual que guarda los coeficientes
+				pedircoefi();
+				
+				//Obtencion del último valor ingresado de la ecuación
+				for (int i=1; i<=numexpo; i++)
+				{
+					aux2=fabs(calif[i]);
+				}
+				
+				//Valor absoluto del ultimo digito ingresado
+				aux2=fabs(aux2);
+				
+				//Valor del primer coeficiente de la ecuacion
+				aux4=calif[0];
+				
+				//Valor absoluto del primer coeficiente
+				aux4=fabs(aux4);
+				
+				printf("\n");
+				
+				printf("\n\nTeorema de posibles ra%cces racionales. \n\n\n", 161);
+				
+				//Obtecion de divisores del último número ingresado
+				//Recorre todo el arreglo y se detiene en el último número
+				printf("\tAo: ");
+				for (int i=1; i<=aux2; i++)
+				{
+					if (aux2%i==0)
+					{
+						printf("(%c)%d, ", mm, i);
+					}
+				}
+				printf("\n");
+				
+				//Obtecion de divisores del primer número ingresado
+				printf("\tAn: ");
+				for (int i=1; i<=aux4; i++)
+				{
+					if (aux4%i==0)
+					{
+						printf("(%c)%d, ", mm, i);
+					}
+				}
+				printf("\n\n");
+				
+				do
+				{
+					//Funcion que relializa la division sintetica
+					resultado();
+					
+					//Escritura en pantalla de los diferentes casos que se pueden presentar
+					if (res==0)
+					{
+						printf("\nSi es una raiz: %f\n", raiz);
+						printf("El resultado es: %f\n", res);
+					}
+					else
+					{
+						printf("\nLa raiz no es: %f\n", raiz);
+						printf("El resultado es: %f\n", res);	
+					}
+					
+					//Pregunta si desea volver a intentar 
+					printf("\n%cDesea intentar otra vez? S/N\n", in);
+					setbuf(stdin, NULL);    //limpia el buffer del teclado
+					scanf("%c",&op);
+					getchar();
+				}while (op == 'S' || op == 's');
+				
+				//Pausa en la ejecucion del programa y despues limpia la pantalla
+				printf("\n\n\n");
+				system("pause");
+				system("cls");
+				break;
+			case 3:
+				//Referencias
+				system ("cls");
+				printf("\n\n");
+				
+				//Creditos del programador
+				printf("\tProyecto: Calculadora de n%cmeros complejos y divisi%cn sint%ctica de n%cmeros reales.\n\n", au, ao, ae, au);
+				printf("\tProgramador: Camacho Bernab%c Roberto %cngel\n\n", ae, 181);
+				printf("\tFundamentos de Programaci%cn\n\n\n\n", ao);
+				
+				//Referencias usadas para la elaboración delproyecto
+				printf("1. Laboratorio Salas A y B. (s. f.). Laboratorio Salas A y B. Recuperado (13 de octubre de 2020) a (22 de enero de 2021)");
+				printf("\n   de http://lcp02.fi-b.unam.mx/\n\n");
+				
+				printf("2. Mart%cnez Quintana, M., & Cruz Mendoza, G. (s. f.). Cursos en L%cnea. Sistema de Cursos en L%cnea.", ai, ai, ai);
+				printf("\n   Recuperado 11 de noviembre de 2020, de http://solucionesmyl.com/cursos/lenguaje_c/\n\n");
+				
+				printf("3. Guzm%cn Vargas, E. (2020, noviembre 18-27). N%cmeros Complejos [Clase te%crica y pr%cctica].", aa, au, ao, aa);
+				printf("\n   N%cmeros Complejos, Ciudad de M%cxico, M%cxico.\n\n", au, ae, ae);
+				
+				printf("4. Guzm%cn Vargas, E. (2020, diciembre 2-9). Polinomios [Clase te%crica y pr%cctica].", aa, ao, aa);
+				printf("\n   Polinomios, Ciudad de M%cxico, M%cxico.\n\n", ae, ae);
+				
+				printf("5. Ernesto Zeferino Diaz. (2017, 27 mayo). De n%cmero decimal a fracci%cn | hecho en c c++ ", au, ao);
+				printf("\n   [V%cdeo]. YouTube. https://www.youtube.com/watch?v=5MsdS3_lDJY&list=LL&index=5\n\n", ai);
+				
+				printf("6. TavCode. (2020, 12 mayo). 18. Obtener parte entera y parte decimal || librer&ca Math.h || programa", ai);
+				printf("\n   en C++ (Dev C++) [V%cdeo]. YouTube. https://www.youtube.com/watch?v=Rk92NejD8G0&list=LL&index=20", ai);
+				
+				//Pausa en la ejecucion del programa y despues limpia la pantalla
+				printf("\n\n\n\n\n");
+				system("pause");
+				system("cls");
+				break;
+			case 4:
+				//Salida del programa
+				printf("\n\n\n");
+				printf("\tElegiste salir del programa.\n\n");
+				break;
+			default:
+				//Opcion no válida
+				printf("\033[1;31m");
+				printf("\n\n\n\n\n");
+				printf("\t\t%c%c Opci%cn no v%clida !!\n\n", 173, 173, ao,aa);
+				printf("\t\tPor favor vuelve a intentar el seleccionar una opci%cn.\n", ao);
+				printf("\033[0m");
+				
+				//Pausa en la ejecucion del programa y despues limpia la pantalla
+				printf("\n\n\n\n\n");
+				system("pause");
+				system("cls");
+				break;
+		}
+	} while (op1!=4);
+	
+	//Despedida por parte del programador
+	printf("\n\n");
+	printf("\tGracias por su preferencia y vuelva a utilizar el programa cuando guste.\n");
+	printf("\n\n\n\n");
+
+	return 0;
+}
+
+//Implementacion de las funciones del programa
+void fraccio (float aux3, float& x, float& y)
+{
+	float aux=1;
+	//Aumenta el valor de a y b, secuencialmente hasta obtener aux
+	while (!(aux == aux3))
+	{
+		aux=x/y;
+		if (aux<aux3)
+		{
+			x++;
+		}
+		else if (aux>aux3)
+		{
+			x--;
+			y++;
+		}	
+	}
+}
+
+//Implementacion de las funciones del programa
+void pedircoefi()
+{
+	//Solicitud del grado del polinomio
+	//Solicitud del exponenet más grande
+	printf("\n\nDigite el exponente m%cs grande de tu ecuaci%cn: ", 160, 162);
+	scanf("%d", &numexpo);
+	calif = new float[numexpo];   //Crear el arreglo
+	
+	//Solicitud de los coeficientes de la ecuacion de grado n
+	for (int i=0; i<=numexpo; i++)
+	{
+		printf("\nIngresa los coeficientes de la ecuaci%cn: ", 162);
+		scanf("%f", &calif[i]);
+	}
+}
+
+//Implementacion de las funciones del programa
+float resultado()
+{
+	//Solicitud de una posible raíz
+	printf("\nIngresa una posible ra%cz: ", 161);
+	scanf("%f",&raiz);
+	
+	//Realización de la división sintética
+	res=calif[0]*raiz;
+	res=res+calif[1];
+	for(int i=2; i<=numexpo; i++)
+	{
+		res=res*raiz;
+		res=calif[i]+res;		
+	}
+}
